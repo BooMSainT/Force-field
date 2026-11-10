@@ -1,0 +1,15 @@
+name: Linux checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install desktop test dependencies
+        run: sudo apt-get update && sudo apt-get install -y python3-tk xvfb
+      - name: Check installer syntax
+        run: bash -n install.sh run.sh
+      - name: Run analysis and desktop fixture tests
+        run: xvfb-run -a python3 -m unittest discover -s tests -v

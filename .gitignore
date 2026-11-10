@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+*.sqlite3*
+*.db*
+*.log
+.env
+.env.*
+dist/
+*.zip
+*.tar.gz
